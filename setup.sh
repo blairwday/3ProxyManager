@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-local timezone="America/Chicago"
+timezone="America/Chicago"
 echo "${timezone}" | sudo tee /etc/timezone
 sudo ln -fs "/usr/share/zoneinfo/${timezone}" /etc/localtime
 sudo dpkg-reconfigure -f noninteractive tzdata

@@ -1,0 +1,17 @@
+sudo apt update
+sudo apt -y full-upgrade
+sudo passwd root
+sudo nano /etc/ssh/sshd_config
+PermitRootLogin yes
+sudo systemctl restart sshd
+
+sudo reboot
+
+sudo apt install php8.1
+cd ~
+git clone https://github.com/z3apa3a/3proxy
+cd 3proxy
+ln -s Makefile.Linux Makefile
+make
+sudo make install
+

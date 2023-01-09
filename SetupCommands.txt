@@ -26,4 +26,6 @@ dpkg -i 3proxy-0.9.4.x86_64.deb
 ulimit -n 65535
 sudo systemctl restart networking
 
+service 3proxy start
+
 

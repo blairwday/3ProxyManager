@@ -4,7 +4,7 @@ sudo passwd root
 sudo nano /etc/ssh/sshd_config
 PermitRootLogin yes
 sudo systemctl restart sshd
-sudo apt install -y php
+sudo apt install -y php git
 
 sudo reboot
 

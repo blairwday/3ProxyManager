@@ -4,10 +4,11 @@ sudo passwd root
 sudo nano /etc/ssh/sshd_config
 PermitRootLogin yes
 sudo systemctl restart sshd
+sudo apt install -y php
 
 sudo reboot
 
-sudo apt install php8.1
+
 cd ~
 wget https://github.com/3proxy/3proxy/releases/download/0.9.4/3proxy-0.9.4.x86_64.deb
 dpkg -i 3proxy-0.9.4.arm.deb

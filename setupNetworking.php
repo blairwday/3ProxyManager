@@ -18,13 +18,17 @@ trap cleanup EXIT SIGHUP SIGINT SIGTERM
 	
 
 	// Get v6 Address
-	exec("ifconfig ".$interface." | grep -i 'inet6 '", $v6network);
-	$v6network = explode('inet6 ', $v6network[0]);
+	exec("ifconfig ".$interface." | grep -i 'inet6 '", $v6config);
+	for($i = 0; $i < sizeof($v6config); $i++){
+		if(strpos($v6config[$i], "::1") !== false){
+			$v6network = $v6config[$i];
+			break;
+		}
+	}
+	$v6network = explode('inet6 ', $v6network);
 	$v6network = explode('::1  prefixlen 44', $v6network[1]);
 	$v6network = $v6network[0];
-	var_dump($v6network);
-	
-	
+
 	// Get v4 Address
 	exec("ifconfig ".$interface." | grep -i 'inet '", $v4network);
 	$v4network = explode('inet ', $v4network[0]);
@@ -34,13 +38,14 @@ trap cleanup EXIT SIGHUP SIGINT SIGTERM
 	// Run Network Setup
 	$proxyList = generateIPv6List($maxCount, $v6network);
 	$result = generateIfConfig($interface, $networkSize, $proxyList);
+	
+	
+	
 	//$result = createValidUsers();
 	//$result = configureThreeProxy($startingPort, $v4network, $proxyList);
 	//var_dump($proxyList);
   
-	var_dump($interface);
-  
-	$v4network = "";
+	
   
 	function generateIPv6List($maxCount, $prefix){
 		// Clear Old File
@@ -68,47 +73,27 @@ trap cleanup EXIT SIGHUP SIGINT SIGTERM
 	}
 	
 	function generateIfConfig($interface, $networkSize, $proxyArray){
-		// Delete Existing Records
-		exec("ifconfig ".$interface." | grep -i 'inet6 '", $v6network);
-		for($i = 0; $i < sizeof($v6network); $i++){
-			$individualIP = explode('inet6 ', $v6network[$i]);
-			$individualIP = explode('  prefixlen 64  scopeid 0x0', $individualIP[1]);
-			var_dump($individualIP[0]);
+		
+		if(file_exists('ifconfig.txt')){
+			// Delete Existing Records
+			$oldIPs = file_get_contents('ifconfig.txt');
+			$oldIPs = str_replace(" add ", " del ", $oldIPs);
+			$oldArray = explode("\r\n", $oldIPs);
+			for($i = 0; $i < sizeof($oldArray)-1; $i++){
+				exec($oldArray[$i]);	
+			}
+		
+			// Clear Old File
+			file_put_contents('ifconfig.txt', "");
 		}
-		
-		
-		
-		
-		/*
-		
-		$v6network = $v6network[0];
-		var_dump($v6network);
-		*/
-		
-		/*
-		$oldIPs = file_get_contents('ifconfig.txt');
-		
-		$oldIPs = str_replace(" add ", " del ", $oldIPs);
-		$oldArray = explode("\r\n", $oldIPs);
-		for($i = 0; $i < sizeof($oldArray)-1; $i++){
-			var_dump($oldArray[$i]);
-			exec($oldArray[$i]);	
-		}
-		*/
-		
-		// Clear Old File
-		//file_put_contents('ifconfig.txt', "");
-		
-		/*
+
 		// Loop Through Proxies
 		for($i = 0; $i < sizeof($proxyArray); $i++){
-			var_dump($proxyArray[$i]);
-			
 			$configLine = "ifconfig ".$interface." inet6 add ".$proxyArray[$i]."/".$networkSize;
 			file_put_contents('ifconfig.txt', $configLine."\r\n", FILE_APPEND);
-			//exec($configLine);
+			exec($configLine);
 		}
-		*/
+		
 		return true;
 		
 	}

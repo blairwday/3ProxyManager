@@ -13,3 +13,11 @@ wget https://github.com/3proxy/3proxy/releases/download/0.9.4/3proxy-0.9.4.x86_6
 dpkg -i 3proxy-0.9.4.arm.deb
 
 
+
+php 
+
+
+ulimit -n 65535
+sudo systemctl restart networking
+
+

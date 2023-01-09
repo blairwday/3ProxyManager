@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+
+
 sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'
 
 ulimit -n 65535

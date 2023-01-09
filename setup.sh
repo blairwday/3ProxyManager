@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'
+
+ulimit -n 65535
+sudo systemctl restart networking
+
+: '
+
 timezone="America/Chicago"
 echo "${timezone}" | sudo tee /etc/timezone
 sudo ln -fs "/usr/share/zoneinfo/${timezone}" /etc/localtime
@@ -16,8 +23,6 @@ MAXCONNS=400
 IP4="192.190.19.63"
 IP6="2602:fe13:ff8:43"
 
-: '
-
 rm $WORKDIR/ipv6.txt
 count_ipv6=1
 while [ "$count_ipv6" -le $MAXCOUNT ]
@@ -29,8 +34,8 @@ do
 		echo $IP6:$(ip64):$(ip64):$(ip64):$(ip64) >> $WORKDIR/ipv6.txt
 		let "count_ipv6 += 1"
 done
-'
+
 
 ulimit -n 65535
 sudo systemctl restart networking
-
+'

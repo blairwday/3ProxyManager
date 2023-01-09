@@ -6,7 +6,10 @@ sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'
 ulimit -n 65535
 sudo systemctl restart networking
 
-: 'sudo apt -y full-upgrade
+: '
+sudo apt install -y php
+
+sudo apt -y full-upgrade
 sudo apt autoremove
 
 

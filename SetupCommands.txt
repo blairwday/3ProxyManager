@@ -1,10 +1,14 @@
 sudo apt update
 sudo apt -y full-upgrade
+sudo apt install -y php git
+git clone https://github.com/blairwday/3ProxyManager
+
+
 sudo passwd root
 sudo nano /etc/ssh/sshd_config
 PermitRootLogin yes
 sudo systemctl restart sshd
-sudo apt install -y php git
+
 
 sudo reboot
 

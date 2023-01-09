@@ -9,9 +9,7 @@ sudo reboot
 
 sudo apt install php8.1
 cd ~
-git clone https://github.com/z3apa3a/3proxy
-cd 3proxy
-ln -s Makefile.Linux Makefile
-make
-sudo make install
+wget https://github.com/3proxy/3proxy/releases/download/0.9.4/3proxy-0.9.4.x86_64.deb
+dpkg -i 3proxy-0.9.4.arm.deb
+
 

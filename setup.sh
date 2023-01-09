@@ -8,8 +8,3 @@ sudo apt -y full-upgrade
 sudo apt autoremove
 ulimit -n 65535
 sudo systemctl restart networking
-
-
-
-
-

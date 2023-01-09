@@ -16,13 +16,8 @@ dpkg -i 3proxy-0.9.4.x86_64.deb
 # Setup Networking
 php 3ProxyManager/setupNetworking.php
 
-
-# Setup 3Proxy
-
-
-
 # Change Configs
-
+php 3ProxyManager/updateTimezone.php
 
 
 

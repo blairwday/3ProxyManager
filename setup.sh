@@ -2,6 +2,7 @@
 set -e
 
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+sudo systemctl restart sshd
 
 
 sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'

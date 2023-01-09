@@ -10,12 +10,17 @@ sudo reboot
 
 
 cd ~
+git clone https://github.com/blairwday/3ProxyManager
 wget https://github.com/3proxy/3proxy/releases/download/0.9.4/3proxy-0.9.4.x86_64.deb
 dpkg -i 3proxy-0.9.4.arm.deb
 
+# Setup 3Proxy
 
 
-php 
+
+# Change Configs
+
+
 
 
 ulimit -n 65535

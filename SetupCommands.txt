@@ -2,27 +2,12 @@ su -
 #Enter Password
 sudo apt update
 sudo apt install -y git
+cd ~
 git clone https://github.com/blairwday/3ProxyManager
 chmod +x 3ProxyManager/setup.sh
 3ProxyManager/setup.sh
-sudo reboot
-
-cd ~
-git clone https://github.com/blairwday/3ProxyManager
-wget https://github.com/3proxy/3proxy/releases/download/0.9.4/3proxy-0.9.4.x86_64.deb
-dpkg -i 3proxy-0.9.4.x86_64.deb
-
-# Setup Networking
-php 3ProxyManager/setupNetworking.php
-
-# Change Configs
-php 3ProxyManager/updateTimezone.php
-
-
-
-ulimit -n 65535
-sudo systemctl restart networking
 
 service 3proxy start
+sudo reboot
 
 

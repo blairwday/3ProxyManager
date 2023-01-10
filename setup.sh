@@ -5,6 +5,6 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 sudo systemctl restart sshd
 sudo apt install -y php
 sudo apt -y full-upgrade
-sudo apt autoremove
+sudo apt -y autoremove
 ulimit -n 65535
 sudo systemctl restart networking

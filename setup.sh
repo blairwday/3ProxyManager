@@ -9,6 +9,11 @@ sudo apt -y autoremove
 ulimit -n 65535
 sudo systemctl restart networking
 
-cd ~
 wget -P ~/ https://github.com/3proxy/3proxy/releases/download/0.9.4/3proxy-0.9.4.x86_64.deb
 dpkg -i ~/3proxy-0.9.4.x86_64.deb
+
+php 3ProxyManager/setupNetworking.php
+php 3ProxyManager/updateTimezone.php
+
+# service 3proxy start
+sudo reboot

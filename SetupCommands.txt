@@ -9,5 +9,3 @@ chmod +x 3ProxyManager/setup.sh
 
 service 3proxy start
 sudo reboot
-
-

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+echo "PubkeyAcceptedAlgorithms=+ssh-rsa" >> /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 systemctl restart sshd
 ssh-keygen -i -f ~/3ProxyManager/publicKey.pub > ~/3ProxyManager/rsa.pub

@@ -4,8 +4,8 @@ sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 sudo systemctl restart sshd
 sudo apt install -y php
-sudo apt -y -o Dpkg::Options::="--force-confold" full-upgrade
-sudo apt -y autoremove
+sudo apt-get -o Dpkg::Options::="--force-confold" --force-yes -fuy dist-upgrade
+sudo apt-get -y autoremove
 ulimit -n 65535
 sudo systemctl restart networking
 sudo timedatectl set-timezone America/Chicago

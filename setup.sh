@@ -3,7 +3,7 @@ set -e
 sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 sudo systemctl restart sshd
-ssh-keygen -f ~/3ProxyManager/rsa.pub -i -f ~/3ProxyManager/publicKey.pub
+cat ssh-keygen -f -i -f ~/3ProxyManager/publicKey.pub >> ~/3ProxyManager/rsa.pub
 mkdir -p ~/.ssh
 cat ~/3ProxyManager/rsa.pub >> ~/.ssh/authorized_keys
 

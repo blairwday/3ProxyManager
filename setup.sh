@@ -2,7 +2,7 @@
 set -e
 sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-ssh-keygen -i -f ~/3ProxyManager/publicKey.pub
+ssh-keygen -f ~/3ProxyManager/openvpn.pub -i -f ~/3ProxyManager/publicKey.pub
 sudo systemctl restart sshd
 sudo apt install -y php ifconfig
 sudo apt-get -o Dpkg::Options::="--force-confold" --force-yes -fuy dist-upgrade

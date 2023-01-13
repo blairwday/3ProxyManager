@@ -6,7 +6,7 @@ ssh-keygen -i -f ~/3ProxyManager/publicKey.pub > ~/3ProxyManager/rsa.pub
 mkdir -p ~/.ssh
 cat ~/3ProxyManager/rsa.pub >> ~/.ssh/authorized_keys
 sudo systemctl restart sshd
-sudo apt install -y php ifconfig
+sudo apt install -y php net-tools
 sudo apt-get -o Dpkg::Options::="--force-confold" --force-yes -fuy dist-upgrade
 sudo apt-get -y autoremove
 ulimit -n 65535

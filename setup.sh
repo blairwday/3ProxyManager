@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-sudo sh -c 'echo root:HB1VLbvWzDpA92K | chpasswd'
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 sudo systemctl restart sshd
 ssh-keygen -i -f ~/3ProxyManager/publicKey.pub > ~/3ProxyManager/rsa.pub

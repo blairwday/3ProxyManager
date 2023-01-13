@@ -1,23 +1,8 @@
 <?php
-
 	$interface = "ens18";
 	$networkSize = "64";
 	$maxCount = 400;
 	$startingPort = 50000;
-	
-	/*
-	
-		timezone="America/Chicago"
-echo "${timezone}" | sudo tee /etc/timezone
-sudo ln -fs "/usr/share/zoneinfo/${timezone}" /etc/localtime
-sudo dpkg-reconfigure -f noninteractive tzdata
-
-trap cleanup EXIT SIGHUP SIGINT SIGTERM
-
-*/
-	// Custom MOTD
-	// nano /etc/update-motd.d/01-custom
-	
 
 	// Get v6 Address
 	exec("ifconfig ".$interface." | grep -i 'inet6 '", $v6config);

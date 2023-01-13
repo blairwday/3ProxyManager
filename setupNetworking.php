@@ -37,6 +37,9 @@ trap cleanup EXIT SIGHUP SIGINT SIGTERM
 	$v4network = explode('  netmask', $v4network[1]);
 	$v4network = $v4network[0];
 	
+	exec("cat ".$v4network." >> /etc/hostname");
+	
+
 	// Run Network Setup
 	$proxyList = generateIPv6List($maxCount, $v6network);
 	$result = generateIfConfig($interface, $networkSize, $proxyList);

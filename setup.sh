@@ -6,7 +6,6 @@ sudo systemctl restart sshd
 ssh-keygen -i -f ~/3ProxyManager/publicKey.pub > ~/3ProxyManager/rsa.pub
 mkdir -p ~/.ssh
 cat ~/3ProxyManager/rsa.pub >> ~/.ssh/authorized_keys
-
 sudo systemctl restart sshd
 sudo apt install -y php ifconfig
 sudo apt-get -o Dpkg::Options::="--force-confold" --force-yes -fuy dist-upgrade

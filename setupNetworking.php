@@ -15,6 +15,8 @@ sudo dpkg-reconfigure -f noninteractive tzdata
 trap cleanup EXIT SIGHUP SIGINT SIGTERM
 
 */
+	// Custom MOTD
+	// nano /etc/update-motd.d/01-custom
 	
 
 	// Get v6 Address
